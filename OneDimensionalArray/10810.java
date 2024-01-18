@@ -9,7 +9,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        Integer[] array = new Integer[n];
+        Integer[] array = new Integer[n+1];
 
         for (int a=0; a<m; a++) {
             st = new StringTokenizer(br.readLine());
@@ -21,12 +21,14 @@ public class Main {
             }
         }
 
-        for (int i=0; i<n; i++) {
+        for (int i=1; i<n+1; i++) {
             if (array[i] == null) {
                 bw.write("0");
-            }
-            else {
+            } else {
                 bw.write(array[i].toString());
+            }
+            if (i<n) {
+                bw.write(" ");
             }
         }
 
