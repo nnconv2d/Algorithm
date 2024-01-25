@@ -11,23 +11,30 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int[] arr = new int[n+1];
-        int[] copy = new int[n+1];
+        int temp = 0;
 
         for (int i=0; i<=n; i++) {
             arr[i] = i;
-            copy[i] = i;
         }
+
         for (int a=0; a<m; a++) {
             st = new StringTokenizer(br.readLine());
             int i = Integer.parseInt(st.nextToken());
             int j = Integer.parseInt(st.nextToken());
-            for (int b=0; b<=j-i; b++) {
-                arr[i+b] = copy[j-b];
+            while (i<j) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
             }
         }
 
-        for (int i=1; i<=n+1; i++) {
-            bw.write(arr[i] + " ");
+        for (int i=1; i<n+1; i++) {
+            bw.write(Integer.toString(arr[i]));
+            if (i != n) {
+                bw.write(" ");
+            }
         }
 
         br.close();
