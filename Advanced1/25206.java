@@ -8,7 +8,7 @@ public class Main {
         StringTokenizer st;
 
         BigDecimal sum = new BigDecimal("0.0");
-        BigDecimal len = new BigDecimal("20");
+        BigDecimal numSum = new BigDecimal("0");
 
         for (int i=0; i<20; i++) {
             st = new StringTokenizer(br.readLine());
@@ -16,7 +16,6 @@ public class Main {
             st.nextToken();
             BigDecimal num = new BigDecimal(st.nextToken());
             String grade = st.nextToken();
-            System.out.println(grade);
             if (grade.equals("A+")) {
                 score = new BigDecimal("4.5");
             } else if (grade.equals("A0")) {
@@ -35,18 +34,15 @@ public class Main {
                 score = new BigDecimal("1.0");
             } else if (grade.equals("F")) {
                 score = new BigDecimal("0.0");
-            } else {
-                len = len.subtract(new BigDecimal("1"));
             }
 
             if (!grade.equals("P")) {
-                sum = sum.add((score.multiply(num)).divide(len));
+                sum = sum.add(score.multiply(num));
+                numSum = numSum.add(num);
             }
-
         }
 
-        System.out.println(len);
-        bw.write(sum+"");
+        System.out.println(sum.divide(numSum, 6, BigDecimal.ROUND_HALF_UP));
 
         br.close();
         bw.flush();
