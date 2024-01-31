@@ -1,37 +1,31 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 public class Main {
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
 
-        st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        int w = 0;
-        int[] card = new int[n];
-        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(br.readLine());
+        List<Integer> list = new ArrayList<>();
         int count = 0;
-        int max = 0;
 
-        while (w<n) {
-            card[w] = Integer.parseInt(st.nextToken());
-            w++;
-        }
-
-        for (int i=0; i<n-2; i++) {
-            for (int j=i+1; j<n-1; j++) {
-                for (int k=j+1; k<n; k++) {
-                    count = card[i] + card[j] + card[k];
-                    if (count <= m && count > max) {
-                        max = count;
-                    }
-                }
+        for (int j=0; j<n; j++) {
+            count = 0;
+            char[] num = (Integer.toString(j)).toCharArray();
+            for (int i=0; i<num.length; i++) {
+                count += Character.getNumericValue(num[i]);
+            }
+            if (j+count == n) {
+                list.add(j);
             }
         }
 
-        bw.write(Integer.toString(max));
+        if (list.isEmpty() == true) {
+            bw.write("0");
+        } else {
+            bw.write(list.get(0)+"");
+        }
 
         br.close();
         bw.flush();
