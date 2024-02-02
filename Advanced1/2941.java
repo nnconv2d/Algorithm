@@ -8,6 +8,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
+        StringBuffer sb = new StringBuffer();
 
         String str = br.readLine();
         List<Character> chars = new ArrayList<>();
@@ -18,19 +19,28 @@ public class Main {
         List<String> cr = Arrays.asList("c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=");
         int len = chars.size();
 
-        for (int i=0; i<len; i++) {
+        int i=0;
+        while (i<len) {
             if (i+1 < len) {
-                if (cr.contains(cr.get(i) + cr.get(i+1))) {
+                sb.append(chars.get(i)).append(chars.get(i+1));
+                if (cr.contains(sb)==true) {
                     count += 1;
-                } else if ((cr.get(i) + cr.get(i+1)) == "dz") {
+                    i++;
+                } else if (sb.equals("dz")) {
                     if (i+2 < len) {
-                        if (cr.contains(cr.get(i) + cr.get(i+1) + cr.get(i+2))) {
+                        if (cr.contains(chars.get(i) + chars.get(i+1) + chars.get(i+2))==true) {
                             count += 1;
+                            i += 2;
                         }
                     }
+                } else {
+                    count += 1;
+                    i++;
                 }
             }
         }
+
+        bw.write(Integer.toString(count));
 
         br.close();
         bw.flush();
