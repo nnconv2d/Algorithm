@@ -7,11 +7,14 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
         int count = 0;
+        List<Character> list = new ArrayList<>();
+
 
         for (int i=0; i<n; i++) {
-            List<Character> list = new ArrayList<>(Arrays.asList(br.readLine());
-
-
+            String str = br.readLine();
+            for (char ch: str.toCharArray()) {
+                list.add(ch);
+            }
         }
 
         bw.write(Integer.toString(count));
