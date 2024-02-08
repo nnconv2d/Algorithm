@@ -9,11 +9,7 @@ public class Main {
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            String str = br.readLine();
-            List<Character> list = new ArrayList<>();
-            for (char ch : str.toCharArray()) {
-                list.add(ch);
-            }
+            input();
             for (int j = 0; j < list.size(); j++) {
                 if (Collections.frequency(list, list.get(j)) > 1) {
                     boolean tf = isGroup(list, j);
@@ -28,9 +24,18 @@ public class Main {
 
         bw.write(Integer.toString(count));
 
-        br.close();
         bw.flush();
         bw.close();
+    }
+    
+    public static void input() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+        List<Character> list = new ArrayList<>();
+        for (char ch : str.toCharArray()) {
+            list.add(ch);
+        }
+        br.close();
     }
 
     public static boolean isGroup(List list, int index) {
