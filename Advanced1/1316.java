@@ -9,33 +9,34 @@ public class Main {
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            input();
+            List<Character> list = makeList(br);
             for (int j = 0; j < list.size(); j++) {
                 if (Collections.frequency(list, list.get(j)) > 1) {
                     boolean tf = isGroup(list, j);
-                    if (tf==false) {
+                    if (!tf) {
                         break;
+                    } else {
+                        count++;
                     }
                 }
-                count++;
             }
             System.out.println(count);
         }
 
         bw.write(Integer.toString(count));
 
+        br.close();
         bw.flush();
         bw.close();
     }
-    
-    public static void input() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    public static List<Character> makeList(BufferedReader br) throws IOException {
         String str = br.readLine();
         List<Character> list = new ArrayList<>();
         for (char ch : str.toCharArray()) {
             list.add(ch);
         }
-        br.close();
+        return list;
     }
 
     public static boolean isGroup(List list, int index) {
@@ -47,5 +48,4 @@ public class Main {
         }
         return true;
     }
-
 }
