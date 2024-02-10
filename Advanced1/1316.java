@@ -42,6 +42,7 @@ public class Main {
     public static boolean isGroup(List list, int index) {
         int[] idx = new int[Collections.frequency(list, list.get(index))];
         for (int i = 0; i < idx.length - 1; i++) {
+            idx[i] = list.get(index);
             if (idx[i + 1] - idx[i] > 1) {
                 return false;
             }
