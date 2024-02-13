@@ -35,10 +35,6 @@ public class Main {
         return list;
     }
 
-    /** list의 index번째 알파벳이 list에 몇 번 들어있는지를 체크한 후
-     * 그 값이 2 이상일 경우 list에서의 알파벳 인덱스 리턴
-     * 이웃하는 인덱스의 차가 2 이상일 경우 false 리턴
-     */
     public static boolean isGroup(List list, int index) {
         int[] idx = new int[Collections.frequency(list, list.get(index))];
         for (int i=0; i<list.size(); i++) {
