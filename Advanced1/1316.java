@@ -9,7 +9,7 @@ public class Main {
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            List<Character> list = makeList(br);
+            List<Character> list = makeList(br); 
             boolean tf = isGroup(list, i);
             if (!tf) {
                 break;
