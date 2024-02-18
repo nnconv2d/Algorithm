@@ -12,7 +12,7 @@ public class Main {
             List<Character> list = makeList(br); 
             boolean tf = isGroup(list, i);
             if (!tf) {
-                break;
+                break; 
             } else {
                 count++;
             }
