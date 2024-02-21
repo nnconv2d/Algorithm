@@ -1,9 +1,7 @@
-t = int(input())
+import sys
+import math
 
-for i in range(t):
-    n = int(input())
-    quarter = n//25
-    dime = (n - quarter*25)//10
-    nickel = (n - quarter*25 - dime*10)//5
-    penny = (n - quarter*25 - dime*10 - nickel*5)
-    print(quarter, dime, nickel, penny)
+input = sys.stdin.readline
+
+a, b, v = map(int, input().split())
+sys.stdout.write(str(math.ceil((v-a)/(a-b))+1))
