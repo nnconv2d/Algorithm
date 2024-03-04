@@ -4,41 +4,33 @@ public class Main {
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
+        Map<Integer, String> dict = new HashMap<>();
+        Map<String, Integer> dict2 = new HashMap<>();
 
-        Set<Integer> a = makeSet();
-        Set<Integer> b = makeSet();
-        Set<Integer> intersection = copySet(a); // 깊은 복사로 생성(addAll 써도 얕은 복사)
+        for (int i=1; i<=n; i++) {
+            String name = br.readLine();
+            dict.put(i, name);
+            dict2.put(name, i);
+        }
 
-        intersection.retainAll(b); // intersection: 교집합
-        a.removeAll(intersection); // a-b
-        b.removeAll(intersection); // b-a
-        a.addAll(b);
-        bw.write(Integer.toString(a.size()));
+        for (int i=0; i<m; i++) {
+            String input = br.readLine();
+            char inp = input.charAt(0);
+            if (inp < 58) { // input이 숫자일 경우(자료형은 아직 String)
+                bw.write(dict.get(Integer.parseInt(input)));
+            } else { // input이 문자열일 경우
+                bw.write(Integer.toString(dict2.get(input)));
+            }
+            bw.newLine();
+        }
 
         br.close();
         bw.flush();
         bw.close();
-    }
-
-    public static Set<Integer> makeSet() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        Set<Integer> a = new HashSet<>();
-        while (st.hasMoreTokens()) {
-            a.add(Integer.parseInt(st.nextToken()));
-        }
-        return a;
-    }
-
-    public static Set<Integer> copySet(Set<Integer> original) {
-        Set<Integer> newSet = new HashSet<>();
-        for (Integer a : original) {
-            newSet.add(a);
-        }
-        return newSet;
     }
 }
