@@ -5,21 +5,36 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        int num = 0;
 
         for (int i=0; i<n; i++) {
-            num = Integer.parseInt(br.readLine());
-                for (int j=2; i<=num/2+1; i++) {
-                    if (i<num/2+1 && num/i!=0) {
-                        num++;
-                    } else if (i==num/2+1 && num%i!=0) {
-                        bw.write(Integer.toString(num));
-                    } else if (i)
+            long num = Long.parseLong(br.readLine());
+            if (isPrime(num)) {
+            } else {
+                while (!isPrime(num)) {
+                    num++;
                 }
             }
+            bw.write(String.valueOf(num));
+            bw.newLine();
+        }
 
         br.close();
         bw.flush();
         bw.close();
+    }
+
+    private static boolean isPrime(long num) {
+        if (num<2) {
+            return false;
+        }
+        if (num==2) {
+            return true;
+        }
+        for (long i=2; i<Math.sqrt(num)+1; i++) {
+            if (num%i==0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
