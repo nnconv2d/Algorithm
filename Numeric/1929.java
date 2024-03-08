@@ -14,15 +14,26 @@ public class Main {
             nums.add(i);
         }
 
-        for (int i)
-
         for (int i=0; i<nums.size(); i++) {
-            bw.write(Integer.toString(nums.get(i)));
+            if (!isPrime(nums)) {
+                bw.write(Integer.toString(nums.get(i)));
+                bw.newLine();
+            }
         }
-
 
         br.close();
         bw.flush();
         bw.close();
+    }
+
+    private static boolean isPrime(List<Integer> list) {
+        for (int i=2; i<=1000; i++) {
+            for (int j=1; j<=1000; j++) {
+                if (list.contains(i*j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
