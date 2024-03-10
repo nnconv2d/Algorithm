@@ -1,5 +1,3 @@
-// 시간 초과
-
 import java.io.*;
 import java.util.*;
 public class Main {
@@ -10,28 +8,28 @@ public class Main {
 
         int m = Integer.parseInt(st.nextToken());
         int n = Integer.parseInt(st.nextToken());
-        List<Integer> nums = new ArrayList<>();
+        int[] nums = new int[n+1];
 
-        for (int i = m; i <= n; i++) {
-            nums.add(i);
-        }
-
-        if (nums.contains(1)) {
-            nums.remove(Integer.valueOf(1));
+        for (int i=0; i<=n; i++) { // 배열 초기화
+            nums[i] = i;
         }
 
         for (int i=2; i<=Math.sqrt(n); i++) {
-            for (int j=i; j<=n/i; j++) {
-                if (nums.contains(i*j)) {
-                    nums.remove(Integer.valueOf(i*j));
-                }
+            if (nums[i] == 0) continue;
+            for (int j=i*2; j<=n; j+=i) {
+                nums[j] = 0;
             }
         }
 
-        for (int i : nums) {
-            bw.write(Integer.toString(i));
-            bw.newLine();
+        StringBuffer sb = new StringBuffer();
+
+        for (int i=m; i<=n; i++) {
+            if (nums[i] != 0 && nums[i] != 1) {
+                sb.append(i+"\n");
+            }
         }
+
+        bw.write(sb.toString());
 
         br.close();
         bw.flush();
