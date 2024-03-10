@@ -1,3 +1,5 @@
+// 시간 초과
+
 import java.io.*;
 import java.util.*;
 public class Main {
@@ -10,30 +12,29 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         List<Integer> nums = new ArrayList<>();
 
-        for (int i=m; i<=n; i++) {
+        for (int i = m; i <= n; i++) {
             nums.add(i);
         }
 
-        for (int i=0; i<nums.size(); i++) {
-            if (!isPrime(nums)) {
-                bw.write(Integer.toString(nums.get(i)));
-                bw.newLine();
+        if (nums.contains(1)) {
+            nums.remove(Integer.valueOf(1));
+        }
+
+        for (int i=2; i<=Math.sqrt(n); i++) {
+            for (int j=i; j<=n/i; j++) {
+                if (nums.contains(i*j)) {
+                    nums.remove(Integer.valueOf(i*j));
+                }
             }
+        }
+
+        for (int i : nums) {
+            bw.write(Integer.toString(i));
+            bw.newLine();
         }
 
         br.close();
         bw.flush();
         bw.close();
-    }
-
-    private static boolean isPrime(List<Integer> list) {
-        for (int i=2; i<=1000; i++) {
-            for (int j=1; j<=1000; j++) {
-                if (list.contains(i*j)) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 }
