@@ -4,7 +4,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
         for (int i=0; i<t; i++) {
-            long n = Integer.parseInt(br.readLine());
+            long n = Long.parseLong(br.readLine());
             System.out.println(findPrime(n));
         }
 
@@ -12,14 +12,22 @@ public class Main {
     }
 
     private static long findPrime(long n) {
-        if (n==0 || n==1) {
-            return 2;
-        }
-        for (int i=2; i<=Math.sqrt(n); i++) {
-            if (n%i == 0) {
+        while (true) {
+            if (isPrime(n)) {
+                return n;
+            } else {
                 n++;
             }
         }
-        return n;
+    }
+
+    private static boolean isPrime(long n) {
+        if (n<=1) return false;
+        else {
+            for (int i=2; i<=Math.sqrt(n); i++) {
+                if (n%i == 0) return false;
+            }
+            return true;
+        }
     }
 }
