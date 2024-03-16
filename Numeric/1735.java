@@ -14,25 +14,12 @@ public class Main {
 
         int a = numerator1 * denominator2 + numerator2 * denominator1;
         int b = denominator1 * denominator2;
-        if (getLeastCommonMultiple(a, b) == a*b) {
-            System.out.print(a + " ");
-            System.out.println(b);
-        } else {
-            int num = a*b/getLeastCommonMultiple(a, b);
-            System.out.println(a/num + " ");
-            System.out.println(b/num);
-        }
-    }
 
-    private static int getLeastCommonMultiple(int a, int b) {
-        int i = 1;
-        int big = Math.max(a, b);
-        int small = Math.min(a, b);
-        while (true) {
-            if (big*i % small == 0) {
-                return big*i;
-            } else {
-                i++;
+        for (int i=a; i>=1; i--) {
+            if (a%i == 0 && b%i == 0) {
+                System.out.print(a/i + " ");
+                System.out.println(b/i);
+                break;
             }
         }
     }
