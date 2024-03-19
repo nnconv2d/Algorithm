@@ -5,36 +5,39 @@ public class Main {
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] trees = new int[n];
+        Integer[] tree = new Integer[n];
         for (int i=0; i<n; i++) {
-            trees[i] = Integer.parseInt(br.readLine());
+            tree[i] = Integer.parseInt(br.readLine());
         }
         br.close();
 
         int[] distance = new int[n-1];
         for (int i=0; i<n-1; i++) {
-            distance[i] = trees[i+1] - trees[i];
+            distance[i] = tree[i+1] - tree[i];
         }
-
         Arrays.sort(distance);
+
         int min = distance[0];
 
-        for (int i=min; i>0; i--) {
-            for (int j: distance) {
-                if (j%i != 0) break;
+        for (int i=0; i<n-1; i++) {
+            if (distance[i]%min != 0) {
+                min--;
+                continue;
+            }
+            if (distance[i]%min == 0 && i==n-2) {
+                break;
             }
         }
 
-        List<Integer> newTrees = new ArrayList<>();
-        Integer[] arr = Arrays.stream(trees).boxed().toArray(Integer[]::new);
+        int count = 0;
 
-        for (int i=trees[0]; i+min<=trees[n-1]; i=i+min) {
-            if (!Arrays.asList(arr).contains(i+min)) {
-                newTrees.add(i+min);
+        for (int i=tree[0]; i+min<=tree[n-1]; i=i+min) {
+            if (!Arrays.asList(tree).contains(i)) {
+                count++;
             }
         }
 
-        System.out.println(newTrees);
-        System.out.println(newTrees.size());
+        System.out.println(count);
+
     }
 }
