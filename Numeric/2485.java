@@ -18,21 +18,24 @@ public class Main {
         Arrays.sort(distance);
 
         int min = distance[0];
+        int i = 0;
 
-        for (int i=0; i<n-1; i++) {
+        while (i < n-1) {
             if (distance[i]%min != 0) {
                 min--;
+                i=0;
                 continue;
             }
             if (distance[i]%min == 0 && i==n-2) {
                 break;
             }
+            i++;
         }
 
         int count = 0;
 
-        for (int i=tree[0]; i+min<=tree[n-1]; i=i+min) {
-            if (!Arrays.asList(tree).contains(i)) {
+        for (int j=tree[0]; j+min<=tree[n-1]; j+=min) {
+            if (!Arrays.asList(tree).contains(j)) {
                 count++;
             }
         }
