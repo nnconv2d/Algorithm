@@ -29,7 +29,7 @@ public class Main {
             if (distance[i]%min == 0 && i==n-2) {
                 break;
             }
-            i++;
+            i++; 
         }
 
         int count = 0;
