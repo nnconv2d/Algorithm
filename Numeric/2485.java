@@ -12,7 +12,7 @@ public class Main {
         br.close();
 
         int[] distance = new int[n-1];
-        for (int i=0; i<n-1; i++) {
+        for (int i=0; i<n-1; i++) { 
             distance[i] = tree[i+1] - tree[i];
         }
         Arrays.sort(distance);
