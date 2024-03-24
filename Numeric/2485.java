@@ -9,7 +9,7 @@ public class Main {
         for (int i=0; i<n; i++) {
             tree[i] = Integer.parseInt(br.readLine());
         }
-        br.close();
+        br.close(); 
 
         int[] distance = new int[n-1];
         for (int i=0; i<n-1; i++) { 
