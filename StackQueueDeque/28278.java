@@ -22,4 +22,14 @@ public class Main {
     private static void push(int x) {
         stack.add(x);
     }
+
+    private static int pop() {
+        if (stack.isEmpty()) {
+            return -1;
+        } else {
+            int pop = stack.get(stack.size()-1);
+            stack.remove(pop);
+            return pop;
+        }
+    }
 }
