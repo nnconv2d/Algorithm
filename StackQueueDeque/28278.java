@@ -32,4 +32,8 @@ public class Main {
             return pop;
         }
     }
+
+    private static int getLength() {
+        return stack.size();
+    }
 }
