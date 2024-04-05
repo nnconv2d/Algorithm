@@ -11,10 +11,17 @@ public class Main {
         for (int i=0; i<n; i++) { /* store cmd, x from input */
             StringTokenizer st = new StringTokenizer(br.readLine());
             int cmd = Integer.parseInt(st.nextToken());
-            int x = Integer.parseInt(st.nextToken());
+            int x = 0;
+            if (st.hasMoreTokens()) {
+                x = Integer.parseInt(st.nextToken());
+            }
 
             switch (cmd) { /* determine a method which will be executed */
                 case 1: push(x);
+                case 2: System.out.println(popAndRemove());
+                case 3: System.out.println(getLength());
+                case 4: System.out.println(isEmpty());
+                case 5: System.out.println(pop());
             }
         }
     }
@@ -23,7 +30,7 @@ public class Main {
         stack.add(x);
     }
 
-    private static int pop() {
+    private static int popAndRemove() {
         if (stack.isEmpty()) {
             return -1;
         } else {
@@ -36,4 +43,21 @@ public class Main {
     private static int getLength() {
         return stack.size();
     }
+
+    private static int isEmpty() {
+        if (stack.isEmpty()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private static int pop() {
+        if (stack.isEmpty()) {
+            return -1;
+        } else {
+            return stack.get(stack.size()-1);
+        }
+    }
+
 }
