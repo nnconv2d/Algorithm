@@ -35,7 +35,7 @@ public class Main {
             return -1;
         } else {
             int pop = stack.get(stack.size()-1);
-            stack.remove(pop);
+            stack.remove(Integer.valueOf(pop));
             return pop;
         }
     }
