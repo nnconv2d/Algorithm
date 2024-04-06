@@ -17,11 +17,11 @@ public class Main {
             }
 
             switch (cmd) { /* determine a method which will be executed */
-                case 1: push(x);
-                case 2: System.out.println(popAndRemove());
-                case 3: System.out.println(getLength());
-                case 4: System.out.println(isEmpty());
-                case 5: System.out.println(pop());
+                case 1: push(x); break;
+                case 2: System.out.println(popAndRemove()); break;
+                case 3: System.out.println(getLength()); break;
+                case 4: System.out.println(isEmpty()); break;
+                case 5: System.out.println(pop()); break;
             }
         }
     }
@@ -59,5 +59,4 @@ public class Main {
             return stack.get(stack.size()-1);
         }
     }
-
 }
