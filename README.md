@@ -1,2 +1,2 @@
 # Algorithm
-Algorithm Study for Python (and some Java...)
+Algorithms in Python (and some Java...)
